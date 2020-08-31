@@ -63,7 +63,7 @@ async function handleFigmaRequest(request) {
         * Don't wanna get spammed!
     */
     const passcode = formData['passcode'];
-    if(passcode !== 'myPasscode') {
+    if (passcode !== 'myPasscode') {
         return new Response("Could not validate origin", {
             headers: { "Content-Type": "application/json" },
             status: 500
@@ -89,22 +89,22 @@ async function handleFigmaRequest(request) {
 
     const data = {
         body: JSON.stringify({
-        "embeds": [
-            {
-                "color": 15307264,
-                "author": {
-                    "name": author
-                },
-                "title": `Comment in ${fileName}`,
-                "url": `${FIGMA_URL}${fileKey}/${fileName}`,
-                "description": comment,
-                "timestamp": timestamp,
-                "footer": {
-                    "icon_url": "https://images.ctfassets.net/1khq4uysbvty/4n5xwN1WkUWseGeAQ8UO8o/e2dfda5b63be2e3ad6d2c2abc69fed51/Frame_2.png",
-                    "text": "FigmaBridge"                
+            "embeds": [
+                {
+                    "color": 15307264,
+                    "author": {
+                        "name": author
+                    },
+                    "title": `Comment in ${fileName}`,
+                    "url": `${FIGMA_URL}${fileKey}/${fileName}`,
+                    "description": comment,
+                    "timestamp": timestamp,
+                    "footer": {
+                        "icon_url": "https://images.ctfassets.net/1khq4uysbvty/4n5xwN1WkUWseGeAQ8UO8o/e2dfda5b63be2e3ad6d2c2abc69fed51/Frame_2.png",
+                        "text": "FigmaBridge"
+                    }
                 }
-            }
-        ]
+            ]
         }),
         method: "POST",
         headers: {
