@@ -49,7 +49,7 @@ We'll be back here shortly, but for now, on to Figma!
 
 ## Figma Webhooks
 
-Figma's [Webhooks V2](https://www.figma.com/developers/api#webhooks_v2) are also currently in an open beta. That means how their API works could change, but as we all know in the world of tech, open beta basically means done. At least, that's what I tell my boss so I don't have to change code anymore.
+Figma's [Webhooks V2](https://www.figma.com/developers/api#webhooks_v2) are also currently in an open beta. That means their API works could change, but as we all know in the world of tech, open beta basically means done. At least, that's what I tell my boss so I don't have to change code anymore.
 
 For this part, you'll need the help of the owner of your Figma team. I'm unsure if there are more granular permissions on teams that allow you to create webhooks, but let's bother our Owner to be safe.
 
@@ -94,6 +94,8 @@ In Discord, we'll want to make a webhook that will send the Figma message into D
 5. Create a new webhook
 6. Name it whatever you'd like and give it an icon. If you're planning on making a bunch of webhooks to split out notifications by internal teams, you probably want to make it descriptive, like "Growth Team" or "Bot Squad"
 7. Copy the webhook URL and save it for later
+
+![](https://cdn.discordapp.com/attachments/645027906669510667/749878998846406657/unknown.png)
 
 OK, finally back to CloudFlare!
 
