@@ -45,7 +45,7 @@ function hex2bin(hex: string) {
 
     const { passcode } = unknown;
     //@ts-ignore
-    if (passcode !== DISCORD_FIGMA_PASSOCDE) {
+    if (passcode !== DISCORD_FIGMA_PASSCODE) {
         return new Response('Invalid passcode', { status: 401 })
       }
   }

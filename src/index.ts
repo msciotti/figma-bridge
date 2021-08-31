@@ -15,7 +15,7 @@ const router = Router();
   And checks for a duplicte event before sending
 */
 type FIGMA_EVENT_CACHE = {
-  [key: string]: string
+  [key: string]: boolean
 };
 
 let FIGMA_CACHE: FIGMA_EVENT_CACHE = {};
@@ -55,12 +55,12 @@ router.post('/figma', verifyFigmaMiddleware, async (req: Request) => {
   const { handle } = triggered_by;
   const { text } = comment[0];
 
-  if (FIGMA_CACHE[file_key] != null && FIGMA_CACHE[file_key] === comment_id) {
+  if (FIGMA_CACHE[comment_id]) {
     // We send 200 so that Figma doesn't try and retry
     return new Response('Please stop sending duplicate events', { status: 200 });
   }
 
-  FIGMA_CACHE[file_key] = comment_id;
+  FIGMA_CACHE[comment_id] = true;
 
   // @ts-ignore
   const webhookEndpoint = await FigmaBridge.get(file_key);

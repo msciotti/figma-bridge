@@ -1,5 +1,7 @@
 # FigmaBridge
 
+> This README is out of date with the migration to a CloudFlare worker. TODO to make a real one.
+
 FigmaBridge posts comments on Figma files into Discord using Discord webhooks and CloudFlare workers. At Discord, we use Discord for work, which means that checking other places for notifications is a pain to remember. We have many channels inside our Engineer and Design server for our different squads, and we wanted to build a way to get team-specific Figma notifcations sent into Discord.
 
 By using Discord webhooks, we can route messages about Figma comments into different text channels depending on the file that was commented on. So we end up getting something like this:
