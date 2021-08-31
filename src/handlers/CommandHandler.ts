@@ -75,10 +75,10 @@ export async function handleApplicationCommand(interaction: Interaction) : Promi
 
     const options = optionsToObject(interaction.data.options ?? []);
     const { file, channel_id } = options;
-    const fileKey = file.split('/')[4];
+    const fileSplit = file.split('/');
 
     // @ts-ignore
-    const webhookEndpoint = await FigmaBridge.get(fileKey);
+    const webhookEndpoint = await FigmaBridge.get(fileSplit[4]);
     if (webhookEndpoint != null) {
         response = {
             type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
@@ -117,12 +117,11 @@ export async function handleApplicationCommand(interaction: Interaction) : Promi
     }
 
     //@ts-ignore
-    await FigmaBridge.put(fileKey, `${DISCORD_API_WEBHOOK_URL}/${resJson.id}/${resJson.token}`);
+    await FigmaBridge.put(fileSplit[4], `${DISCORD_API_WEBHOOK_URL}/${resJson.id}/${resJson.token}`);
     response = {
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
-            flags: InteractionResponseFlags.EPHEMERAL,
-            content: 'File registered! You should start seeing comments come through'
+            content: `Success! Comments for "${fileSplit[5].split('?')[0].replaceAll('-', ' ')}" will be sent to <#${channel_id}>.`
         }
     };
     return new Response(JSON.stringify(response), { status: 200, headers: { 'Content-type': 'application/json' } });
